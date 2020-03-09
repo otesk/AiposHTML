@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Name}}</title>
+</head>
+<body>
+<div>
+    User with an id of {{.ID}}<br>
+    Name: {{.Name}}<br>
+    Balance: {{.Balance}}<br>
+    You can fund or take points<br>
+</div>
+<form action="http://localhost:8000/user/fund" method="get">
+    <div>
+        <label for="points_id">How much points to add</label>
+        <input name="points" id="points_id">
+    </div>
+    <input type="hidden" , name="user" , value="{{.ID}}">
+    <div>
+        <button>Fund</button>
+    </div>
+</form>
+<form action="http://localhost:8000/user/take" method="get">
+    <div>
+        <label for="points_id">How much points to take</label>
+        <input name="points" id="points_id">
+    </div>
+    <input type="hidden" , name="user" , value="{{.ID}}">
+    <div>
+        <button>Take</button>
+    </div>
+</form>
+<form action="http://localhost:8000/user/delete" method="get">
+    <input type="hidden" , id="user" , value="{{.ID}}">
+    <div>
+        <button>Delete this user</button>
+    </div>
+</form>
+</body>
+</html>

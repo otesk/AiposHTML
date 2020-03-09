@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    Tournament with an id of {{.ID}}<br>
+    Name: {{.Name}}<br>
+    Deposit: {{.Deposit}}<br>
+    Prize: {{.Prize}}<br>
+    Winner: {{.Winner}}<br>
+    Users:{{.Users}}<br>
+    You can fund or take points<br>
+</div>
+<form action="http://localhost:8000/tournament/join" method="get">
+    <div>
+        <label for="user_id">What is user id?</label>
+        <input name="user" id="user_id">
+    </div>
+    <input type="hidden" , name="tournament" , value="{{.ID}}">
+    <div>
+        <button>Join</button>
+    </div>
+</form>
+<form action="http://localhost:8000/tournament/finish" method="get">
+    <input type="hidden" , name="tournament" , value="{{.ID}}">
+    <div>
+        <button>Finish</button>
+    </div>
+</form>
+<form action="http://localhost:8000/tournament/cancel" method="get">
+    <input type="hidden" , id="tournament" , value="{{.ID}}">
+    <div>
+        <button>Cancel</button>
+    </div>
+</form>
+</body>
+</html>

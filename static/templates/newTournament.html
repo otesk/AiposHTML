@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create tournament</title>
+</head>
+<body>
+Create a new tournament
+<br>
+<form action="http://localhost:8000/tournament/create" method="get">
+    <div>
+        <label for="tournament_name">What is tournament's name?</label>
+        <input name="name" id="tournament_name">
+        <label for="tournament_deposit">What is tournament's deposit?</label>
+        <input name="deposit" id="tournament_deposit">
+    </div>
+    <div>
+        <button>Create tournament</button>
+    </div>
+</form>
+</body>
+</html>

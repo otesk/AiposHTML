@@ -1,0 +1,55 @@
+version: '3'
+services:
+  tournament-service:
+    image: "micro-tournaments:relic"
+    ports:
+      - "8081:8081"
+      - "9001:9001"
+    depends_on:
+      - postgres-srv
+      - users-service
+    restart: unless-stopped
+    environment:
+      - DB_HOST=172.17.0.1
+
+  postgres-srv:
+    image: "postgres:10"
+    volumes:
+      - "~/aipos/data/tournament:/var/lib/postgresql/tournament_data"
+    container_name: "postgres-srv"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=tournaments_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    restart: unless-stopped
+
+  mongo-srv:
+    image: "mongo"
+    container_name: "mongo-srv"
+    volumes:
+      - "~/aipos/data/user:/db/data"
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+
+  users-service:
+    image: "micro-users:relic"
+    ports:
+      - "8080:8080"
+      - "9000:9000"
+    depends_on:
+      - mongo-srv
+    restart: unless-stopped
+    environment:
+      - MONGO_DB_URL=mongodb://172.17.0.1:27017
+
+  html-service:
+    image: "html:relic"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - tournament-service
+      - users-service
+    restart: unless-stopped

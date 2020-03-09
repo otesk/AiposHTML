@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>yes hello</title>
+</head>
+<body>
+Greetings, you may search for user or tournament here
+<br>
+<form action="http://localhost:8000/user/find" method="get">
+    <div>
+        <label for="user_id">What is user's id?</label>
+        <input name="user" id="user_id">
+    </div>
+    <div>
+        <button>Get user</button>
+    </div>
+</form>
+<form action="http://localhost:8000/tournament/find" method="get">
+    <div>
+        <label for="tournament_id">What is tournament's id?</label>
+        <input name="tournament" id="tournament_id">
+    </div>
+    <div>
+        <button>Get tournament</button>
+    </div>
+</form>
+<br>
+You can also create new user or new tournament
+<br>
+<form action="http://localhost:8000/user/new" method="get">
+    <div>
+        <button>Create user</button>
+    </div>
+</form>
+<form action="http://localhost:8000/tournament/new" method="get">
+    <div>
+        <button>Create tournament</button>
+    </div>
+</form>
+</body>
+</html>
